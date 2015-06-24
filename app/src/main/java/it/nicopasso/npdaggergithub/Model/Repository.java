@@ -3,16 +3,23 @@ package it.nicopasso.npdaggergithub.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import auto.parcel.AutoParcel;
+
 /**
  * Created by niccolo on 24/06/15.
  */
-public class Repository implements Parcelable {
+@AutoParcel
+public abstract class Repository implements Parcelable {
 
-    public long id;
-    public String name;
-    public String url;
+    public abstract long id();
+    public abstract String name();
+    public abstract String url();
 
-    public Repository() {
+    public static Repository create(long id, String name, String url) {
+        return new AutoParcel_Repository(id, name, url);
+    }
+
+    /*public Repository() {
     }
 
     private Repository(Parcel in) {
@@ -43,5 +50,5 @@ public class Repository implements Parcelable {
         dest.writeLong(this.id);
         dest.writeString(this.name);
         dest.writeString(this.url);
-    }
+    }*/
 }

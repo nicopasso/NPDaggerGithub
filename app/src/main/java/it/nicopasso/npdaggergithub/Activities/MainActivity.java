@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 import it.nicopasso.npdaggergithub.Activities.Components.DaggerMainActivityComponent;
+import it.nicopasso.npdaggergithub.Activities.Components.MainActivityComponent;
 import it.nicopasso.npdaggergithub.Activities.Modules.MainActivityModule;
 import it.nicopasso.npdaggergithub.Activities.Presenters.MainActivityPresenter;
 import it.nicopasso.npdaggergithub.ApplicationComponent;
@@ -33,7 +34,16 @@ public class MainActivity extends BaseActivity {
     @InjectView(R.id.loading_progress)
     ProgressBar mLoadingProgressBar;
 
-    @Inject
+
+    /**
+     * Two ways to inject the MainActivityPresenter:
+     * 1) @Inject before the instance and in the setupActivityCompoennt method, call .inject(this)
+     * 2) Without the @Inject annotation and in the setupActivityComponent method, create an instance of MainActivityComponent
+     *      and then call presenter = component.presenter();
+     *
+     */
+
+    //@Inject
     MainActivityPresenter presenter;
 
     @Override
@@ -55,11 +65,24 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void setupActivityComponent(ApplicationComponent applicationComponent) {
+
+        //1st solution
+        MainActivityComponent component = DaggerMainActivityComponent.builder()
+                .applicationComponent(applicationComponent)     //Takes appComponent explicitly (depends on it)
+                .mainActivityModule(new MainActivityModule(this))
+                .build();
+
+        presenter = component.presenter();
+
+        /*
+        //2nd solution
         DaggerMainActivityComponent.builder()
                 .applicationComponent(applicationComponent)     //Takes appComponent explicitly (depends on it)
                 .mainActivityModule(new MainActivityModule(this))
-                .build()
+                .build();
                 .inject(this);
+         */
+
 
     }
 

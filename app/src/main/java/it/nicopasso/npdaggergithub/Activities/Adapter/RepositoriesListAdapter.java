@@ -38,7 +38,7 @@ public class RepositoriesListAdapter extends ArrayAdapter<Repository> {
         }
 
         Repository repository = getItem(position);
-        holder.text1.setText(repository.name);
+        holder.text1.setText(repository.name());
 
         return convertView;
 

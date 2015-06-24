@@ -39,4 +39,8 @@ dependencies {
 
     //Guava
     compile 'com.google.guava:guava:18.0'
+
+    //AutoParcel
+    apt 'com.github.frankiesardo:auto-parcel-processor:0.3'
+    compile 'com.github.frankiesardo:auto-parcel:0.3'
 }

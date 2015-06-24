@@ -34,10 +34,10 @@ public class RepositoryManager {
                         final ImmutableList.Builder<Repository> listBuilder = ImmutableList.builder();
 
                         for (RepositoryResponse repositoryResponse : repositoryListResponse) {
-                            Repository repo = new Repository();
-                            repo.id = repositoryResponse.id;
-                            repo.name = repositoryResponse.name;
-                            repo.url = repositoryResponse.url;
+                            Repository repo = Repository.create(repositoryResponse.id, repositoryResponse.name, repositoryResponse.url); //new Repository();
+                            //repo.id = repositoryResponse.id;
+                            //repo.name = repositoryResponse.name;
+                            //repo.url = repositoryResponse.url;
                             listBuilder.add(repo);
                         }
 
