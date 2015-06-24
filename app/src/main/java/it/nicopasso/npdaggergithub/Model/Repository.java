@@ -1,37 +1,47 @@
 package it.nicopasso.npdaggergithub.Model;
 
-import java.util.Date;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
- * Created by niccolo on 23/06/15.
+ * Created by niccolo on 24/06/15.
  */
-public class Repository {
+public class Repository implements Parcelable {
+
     public long id;
     public String name;
-    public String full_name;
-    public User owner;
-    public String html_url;
-    public String description;
     public String url;
-    public Date created_at;
-    public Date updated_at;
-    public Date pushed_at;
-    public String git_url;
-    public String ssh_url;
-    public String clone_url;
-    public String svn_url;
-    public String homepage;
-    public int stargazers_count;
-    public int watchers_count;
-    public String language;
-    public boolean has_issues;
-    public boolean has_downloads;
-    public boolean has_wiki;
-    public boolean has_pages;
-    public int forks_count;
-    public int open_issues_count;
-    public int forks;
-    public int open_issues;
-    public int watchers;
-    public String default_branch;
+
+    public Repository() {
+    }
+
+    private Repository(Parcel in) {
+        this.id = in.readLong();
+        this.name = in.readString();
+        this.url = in.readString();
+    }
+
+    public static final Creator<Repository> CREATOR = new Creator<Repository>() {
+        @Override
+        public Repository createFromParcel(Parcel in) {
+            return new Repository(in);
+        }
+
+        @Override
+        public Repository[] newArray(int size) {
+            return new Repository[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(this.id);
+        dest.writeString(this.name);
+        dest.writeString(this.url);
+    }
 }

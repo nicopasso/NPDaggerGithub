@@ -2,8 +2,8 @@ package it.nicopasso.npdaggergithub.RetrofitServices;
 
 import java.util.List;
 
-import it.nicopasso.npdaggergithub.Model.Repository;
-import it.nicopasso.npdaggergithub.Model.User;
+import it.nicopasso.npdaggergithub.Model.RepositoryResponse;
+import it.nicopasso.npdaggergithub.Model.UserResponse;
 import retrofit.http.GET;
 import retrofit.http.Path;
 import rx.Observable;
@@ -14,9 +14,9 @@ import rx.Observable;
 public interface GithubApiService {
 
     @GET("/users/{username}")
-    Observable<User> getUserInfo(@Path("username") String username);
+    Observable<UserResponse> getUserInfo(@Path("username") String username);
 
     @GET("/users/{username}/repos")
-    Observable<List<Repository>> getUserRepos(@Path("username") String username);
+    Observable<List<RepositoryResponse>> getUserRepos(@Path("username") String username);
 
 }

@@ -36,4 +36,7 @@ dependencies {
 
     //RxAndroid
     compile 'io.reactivex:rxandroid:0.24.0'
+
+    //Guava
+    compile 'com.google.guava:guava:18.0'
 }
