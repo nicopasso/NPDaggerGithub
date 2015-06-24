@@ -8,6 +8,8 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import it.nicopasso.npdaggergithub.Managers.RepositoryManager;
+import it.nicopasso.npdaggergithub.Managers.UserManager;
 import it.nicopasso.npdaggergithub.RetrofitServices.GithubApiService;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
@@ -41,6 +43,18 @@ public class GithubApiModule {
     @Singleton
     GithubApiService provideGithubApiService(RestAdapter restAdapter) {
         return restAdapter.create(GithubApiService.class);
+    }
+
+    @Provides
+    @Singleton
+    UserManager provideUserManager(GithubApiService githubApiService) {
+        return new UserManager(githubApiService);
+    }
+
+    @Provides
+    @Singleton
+    RepositoryManager provideRepositoryManager(GithubApiService githubApiService) {
+        return new RepositoryManager(githubApiService);
     }
 
 }

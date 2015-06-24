@@ -22,7 +22,7 @@ import it.nicopasso.npdaggergithub.Managers.UserManager;
 )
 public interface ApplicationComponent {
 
-    //void inject(GithubDaggerApplication application);
+    //GithubDaggerApplication inject(GithubDaggerApplication application);
 
     Application getApplication();
 

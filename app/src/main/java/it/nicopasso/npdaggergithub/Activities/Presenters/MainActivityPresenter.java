@@ -1,5 +1,7 @@
 package it.nicopasso.npdaggergithub.Activities.Presenters;
 
+import android.util.Log;
+
 import it.nicopasso.npdaggergithub.Activities.MainActivity;
 import it.nicopasso.npdaggergithub.Managers.UserManager;
 import it.nicopasso.npdaggergithub.Model.User;
@@ -34,6 +36,8 @@ public class MainActivityPresenter {
 
             @Override
             public void onError(Throwable e) {
+
+                Log.e("RETROFIT ERROR", e.getLocalizedMessage());
                 mainActivity.showLoading(false);
             }
         });

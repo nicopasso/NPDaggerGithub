@@ -17,6 +17,7 @@ public class UserManager {
 
     private GithubApiService githubApiService;
 
+    //@Inject
     public UserManager(GithubApiService githubApiService) {
         this.githubApiService = githubApiService;
     }
