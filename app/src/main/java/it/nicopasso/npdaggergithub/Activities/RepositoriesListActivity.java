@@ -84,6 +84,6 @@ public class RepositoriesListActivity extends BaseActivity {
     @OnItemClick(R.id.repos_list)
     public void onRepositoryPressed(int position) {
         Repository repository = repositoriesListAdapter.getItem(position);
-        //TODO: open DetailsActivity
+        RepositoriesDetailsActivity.startWithRepository(repository, this);
     }
 }
